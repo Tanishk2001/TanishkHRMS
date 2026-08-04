@@ -16,7 +16,7 @@ See `docs/ai_architecture.md` for the full design writeup,
 ```bash
 cd backend
 pip install -r requirements.txt --break-system-packages
-export ANTHROPIC_API_KEY=sk-ant-...   # optional — app runs fully without it
+export ANTHROPIC_API_KEY=sk-ant-...   
 alembic upgrade head                  # applies migrations (backend/alembic/versions/)
 python -m app.seed_data               # clears + reseeds rows (safe to re-run)
 python -m uvicorn app.main:app --reload --port 8000
