@@ -332,37 +332,39 @@ The AI assistant never bypasses backend validation. Sensitive operations are rou
 
 ## Login
 
-![Login](images/Screenshot(410).png)
+## Login
+
+![Login](images/login.png)
 
 ---
 
 ## Dashboard
 
-*(Add Screenshot)*
+![Dashboard](images/dashboard.png)
 
 ---
 
 ## Employee Management
 
-*(Add Screenshot)*
+![Employee](images/employee.png)
 
 ---
 
 ## Attendance
 
-*(Add Screenshot)*
+![Attendance](images/attendance.png)
 
 ---
 
 ## Reports
 
-*(Add Screenshot)*
+![Reports](images/reports.png)
 
 ---
 
 ## AI Copilot
 
-*(Add Screenshot)*
+![Copilot](images/copilot.png)
 
 ---
 
