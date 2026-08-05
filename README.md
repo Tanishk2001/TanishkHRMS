@@ -388,13 +388,7 @@ The AI assistant never bypasses backend validation. Sensitive operations are rou
 
 ---
 
-# 🎥 Demo Video
 
-Demo Video:
-
-**(Add YouTube / Google Drive Link)**
-
----
 
 # 🚧 Known Limitations
 
