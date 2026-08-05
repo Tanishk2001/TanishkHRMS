@@ -4,6 +4,16 @@
 
 ---
 
+## 🎥 Demo Video
+[▶️ Watch Complete Project Demo](https://drive.google.com/file/d/1OMZc8ic8Mu4q6qyS8r2vWE2HcFP7xMUR/view?usp=sharing)
+
+## 🌐 Live Demo
+https://tanishkhrms.vercel.app/
+
+## 📖 Documentation
+
+...
+
 # 📌 Overview
 
 CB Nest is a full-stack Human Resource Management System designed to digitize and automate HR operations within an organization.
