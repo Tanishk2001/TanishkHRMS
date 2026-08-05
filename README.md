@@ -326,6 +326,11 @@ The AI assistant never bypasses backend validation. Sensitive operations are rou
 8. Report Generation
 9. AI Assistance
 
+ Role	                Email	                     Password
+Admin	         admin@novaworks.com	             admin123
+Manager	       rahul.manager@novaworks.com	     manager123
+Employee	     employee@novaworks.com	           employee123
+
 ---
 
 # 📸 Screenshots
