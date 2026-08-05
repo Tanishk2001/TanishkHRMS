@@ -10,6 +10,15 @@
 ## 🌐 Live Demo
 https://tanishk-hrms.vercel.app/
 
+## Demo Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| **Admin** | `admin@novaworks.com` | `admin123` |
+| **Manager** | `rahul.manager@novaworks.com` | `manager123` |
+| **Employee** | `employee@novaworks.com` | `employee123` |
+---
+
 ## 📖 Documentation
 
 ...
@@ -338,14 +347,7 @@ The AI assistant never bypasses backend validation. Sensitive operations are rou
     
 ----
 
-## Demo Credentials
 
-| Role | Email | Password |
-|------|-------|----------|
-| **Admin** | `admin@novaworks.com` | `admin123` |
-| **Manager** | `rahul.manager@novaworks.com` | `manager123` |
-| **Employee** | `employee@novaworks.com` | `employee123` |
----
 
 # 📸 Screenshots
 
