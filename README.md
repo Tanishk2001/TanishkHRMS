@@ -330,7 +330,6 @@ The AI assistant never bypasses backend validation. Sensitive operations are rou
 
 # 📸 Screenshots
 
-## Login
 
 ## Login
 
