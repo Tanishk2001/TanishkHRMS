@@ -10,7 +10,7 @@ The AI never writes directly to the database. Read operations use guarded SQL qu
 
 # Architecture
 
-![Architecture](images/architecture.png)
+![Architecture](architecture.png)
 
 ---
 
