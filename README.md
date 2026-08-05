@@ -332,7 +332,7 @@ The AI assistant never bypasses backend validation. Sensitive operations are rou
 
 ## Login
 
-*(Add Screenshot)*
+![Login](images/Screenshot(410).png)
 
 ---
 
