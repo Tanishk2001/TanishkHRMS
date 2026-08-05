@@ -1,158 +1,417 @@
-# CB Nest — NovaWorks PeopleOps Copilot
+# 🚀 CB Nest – NovaWorks PeopleOps Copilot
 
-AI-powered HR operations copilot built on top of a full-stack CB Nest
-HRMS: a Policy RAG assistant, a read-only SQL agent, and an HR task
-automation agent that performs actions through the existing backend
-APIs — never through direct database writes.
+> AI-powered Human Resource Management System (HRMS) built with **React + FastAPI + PostgreSQL**, featuring secure HR workflows, role-based access control, reporting, and an AI-powered HR Copilot.
 
-See `docs/ai_architecture.md` for the full design writeup,
-`docs/ai_permissions_matrix.md` for the RBAC matrix, and
-`docs/ai_eval_results.md` for actual test results from a live run.
+---
 
-## Quick start
+# 📌 Overview
 
-### Backend
+CB Nest is a full-stack Human Resource Management System designed to digitize and automate HR operations within an organization.
+
+The system centralizes employee management, attendance tracking, leave management, asset allocation, exit workflows, employee engagement, time tracking, help desk tickets, company policies, announcements, reporting, and AI-assisted HR operations in a single platform.
+
+The project follows a modern layered architecture using React for the frontend and FastAPI for backend services.
+
+---
+
+# ✨ Core Features
+
+## 🔐 Authentication & Security
+
+- Secure Login
+- Role-Based Access Control (RBAC)
+- Protected API Endpoints
+- JWT Authentication
+- Backend Permission Validation
+
+---
+
+## 👨‍💼 Employee Management
+
+- Employee Directory
+- Employee Profiles
+- Departments
+- Designations
+- CRUD Operations
+
+---
+
+## 🕒 Attendance Management
+
+- Attendance Records
+- Attendance Tracking
+- Attendance Reports
+
+---
+
+## 📝 Leave Management
+
+- Apply Leave
+- Approve / Reject Leave
+- Leave Status Tracking
+
+---
+
+## 💻 Asset Management
+
+- Asset Inventory
+- Asset Assignment
+- Asset Return Tracking
+
+---
+
+## 🚪 Exit Management
+
+- Exit Requests
+- Exit Workflow
+- Clearance Tracking
+
+---
+
+## 🎯 Employee Engagement
+
+- Employee Engagement Records
+- Activity Tracking
+
+---
+
+## ⏱ Time Tracking
+
+- Time Entry Management
+- Work Log Tracking
+
+---
+
+## 🎫 Help Desk
+
+- HR Support Tickets
+- Ticket Categories
+- Ticket Comments
+- SLA Tracking
+
+---
+
+## 📢 Announcements
+
+- Organization Announcements
+- Company Updates
+
+---
+
+## 📚 Company Policies
+
+- HR Policies
+- Employee Guidelines
+
+---
+
+## 📊 Reports
+
+- Attendance Reports
+- Leave Reports
+- Employee Reports
+- HR Analytics
+
+---
+
+## 🤖 AI PeopleOps Copilot
+
+- HR Policy Question Answering
+- Secure Information Retrieval
+- AI-assisted HR Operations
+- Audit Logging
+- Permission-aware AI Actions
+
+---
+
+# 🏗 Architecture
+
+```text
+                    React Frontend
+                           │
+                           │ REST APIs
+                           ▼
+                    FastAPI Backend
+                           │
+      Authentication • Authorization • Validation
+                           │
+                   Business Logic Layer
+                           │
+                    SQLAlchemy ORM
+                           │
+                      PostgreSQL
+                           │
+               AI Services & Audit Logs
+```
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React
+- JavaScript
+- React Router
+- Axios
+- CSS
+
+## Backend
+
+- FastAPI
+- Python
+
+## Database
+
+- PostgreSQL
+- SQLAlchemy ORM
+- Alembic
+
+## AI
+
+- OpenAI Integration
+- Embeddings
+- Action Agent
+- Permission-aware AI APIs
+- Audit Logging
+
+## Deployment
+
+- Frontend: Vercel
+
+---
+
+# 📂 Repository Structure
+
+```text
+backend/
+│
+├── alembic/
+├── app/
+│   ├── api/
+│   │   └── v1/
+│   │       └── endpoints/
+│   ├── core/
+│   ├── db/
+│   ├── models/
+│   ├── schemas/
+│   ├── services/
+│   │   └── ai/
+│   ├── seed_data.py
+│   └── main.py
+│
+frontend/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── hooks/
+│   └── utils/
+```
+
+---
+
+# ⚙ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Tanishk2001/TanishkHRMS.git
+
+cd TanishkHRMS
+```
+
+---
+
+## Backend
 
 ```bash
 cd backend
-pip install -r requirements.txt --break-system-packages
-export ANTHROPIC_API_KEY=sk-ant-...   
-alembic upgrade head                  # applies migrations (backend/alembic/versions/)
-python -m app.seed_data               # clears + reseeds rows (safe to re-run)
-python -m uvicorn app.main:app --reload --port 8000
+
+pip install -r requirements.txt
+
+alembic upgrade head
+
+uvicorn app.main:app --reload
 ```
 
-Open http://localhost:8000/docs for interactive API docs.
+---
 
-Seed accounts:
-
-| Role     | Email                        | Password    |
-|----------|-------------------------------|-------------|
-| Admin    | admin@novaworks.com          | admin123    |
-| Manager  | rahul.manager@novaworks.com  | manager123  |
-| Employee | employee@novaworks.com       | employee123 |
-
-### Frontend
+## Frontend
 
 ```bash
 cd frontend
-cp .env.example .env.local
+
 npm install
+
 npm run dev
 ```
 
-Open http://localhost:3000, sign in with one of the seed accounts above,
-and you'll land on `/ai-copilot` with three tabs: **Ask HR Policy**,
-**Ask About People & Projects**, and **Automate HR Task**.
+---
 
-### Verifying it all works
+# 📚 API Documentation
 
-**Automated suite (recommended)** — self-contained, boots its own throwaway
-server + database, no manual setup needed, and runs automatically in CI on
-every push (see `.github/workflows/backend-tests.yml`):
+FastAPI automatically generates Swagger documentation.
 
-```bash
-cd backend
-pip install -r requirements.txt   # includes pytest
-python -m pytest -v
-```
-
-Covers Policy RAG (including injection embedded in an actual policy
-document, not just the user's question — see `test_prompt_injection.py`),
-the SQL agent (RBAC-gated and security cases), the HR action agent
-(confirmation flow, multiple approve/reject phrasings, permission
-denials), the router, the SQL guardrails, and the AI usage dashboard /
-recent-actions endpoints, as pure unit + integration tests. Nothing here
-requires an already-running server, a seeded database, or an LLM API
-key — each test session spins up its own on a random free port and
-tears it down afterward.
-
-**Manual scripts** — handy for a quick sanity check against a server
-you already have running (e.g. while developing):
-
-```bash
-cd backend
-python smoke_test.py            # exercises all 3 chat endpoints + RBAC + confirmation flow
-python test_sql_guardrails.py   # unit-tests the SQL safety layer directly
-```
-
-Both scripts require the backend server to already be running (see
-above) and print pass/fail results for every case inline.
-
-## Project layout
+Open:
 
 ```
-.github/workflows/       ← CI: backend pytest suite + frontend build, on every push
-backend/
-  alembic.ini, alembic/env.py, alembic/versions/                       ← schema migrations
-    0001_initial_hrms_schema.py, 0002_add_ai_audit_logs.py
-  app/
-    core/          config, JWT auth
-    db/            SQLAlchemy engine/session
-    models/        HRMS domain models + AI audit log
-    schemas/       Pydantic request/response models
-    api/v1/endpoints/
-      auth.py, leaves.py, tickets.py, announcements.py, employees.py, policies.py, attendance.py, reports.py, assets.py, exits.py, engagement.py, time_entries.py  ← existing HRMS APIs
-      chat.py                                                          ← AI endpoints
-    services/ai/
-      policy_rag.py, embeddings.py, vector_store.py                    ← RAG
-      sql_agent.py, sql_guardrails.py                                  ← SQL agent + safety
-      action_agent.py, api_tools.py, permissions.py                    ← task automation + RBAC
-      audit.py                                                         ← audit logging
-    seed_data.py    (clears + reinserts rows — schema is migration-owned)
-  tests/            ← automated pytest suite (self-contained, CI-wired)
-  smoke_test.py, test_sql_guardrails.py, eval_dataset.json  ← manual/live-server scripts
-frontend/
-  app/dashboard/page.tsx    home page — the "Ask the Copilot" hero + live-data cards
-  app/ai-copilot/page.tsx   the 3-tab chat interface
-  app/{employees,attendance,leaves,time-tracking,assets,exits,engagement,announcements,policies,tickets,reports}/page.tsx
-  components/layout/        sidebar, topbar, shell, dash-card
-  components/ai/            chat panel, source list, SQL table, action card
-  lib/api.ts                typed API client
-docs/
-  ai_architecture.md, ai_permissions_matrix.md, ai_eval_results.md
+http://localhost:8000/docs
 ```
 
-## Modules & roadmap
+---
 
-Beyond the four required AI capabilities, this project also implements a
-growing slice of standard HRMS functionality: Core HR (employees,
-departments, projects, skills), Leave Management, a Help Desk (tickets),
-HR policy reference, **Attendance Management**, **Reports & Analytics**
-(admin-only dashboards with real charts), **Asset Management**
-(inventory, issue/return workflow), **Exit Management** (resignation →
-approval → offboarding checklist → completion, which genuinely
-deactivates the employee only once every checklist item — including a
-live-verified asset return — is actually true), **Employee Engagement**
-(Polls with live results and one-vote-per-person enforcement, plus
-peer-to-peer Kudos), and **Time Tracking** (employees log hours only
-against projects they're genuinely assigned to — validated against the
-real assignment data, not just any project id — with a daily-hours
-sanity cap and a manager/admin team view), alongside the original
-Announcements module.
+# 🔒 Security
 
-Measured against a full Zoho People/BambooHR-style feature set (ATS,
-onboarding, payroll, performance management, LMS, time tracking, expense
-management, asset management, document management, exit management,
-compliance, and a visual workflow builder), those remain out of scope —
-each is realistically its own multi-week build, not a quick addition,
-and this project prioritizes depth (real business rules, RBAC, and a
-tested automated suite for every module) over shallow breadth.
+The application implements multiple security mechanisms.
 
-## Security notes
+- JWT Authentication
+- Role-Based Access Control
+- Backend Permission Validation
+- SQLAlchemy ORM (prevents raw SQL construction in ORM usage)
+- Request Validation using Pydantic Schemas
+- AI Permission Enforcement
+- AI Audit Logs
 
-- AI agents never write to the database directly — all mutations go
-  through the existing, already-validated backend API endpoints using
-  the current user's own JWT.
-- All generated SQL (template or LLM-produced) passes through a single
-  guardrail function before execution: single-statement, SELECT-only,
-  no forbidden keywords, no sensitive columns, hard row limit.
-- Every AI interaction is audit-logged (user, role, intent, tool,
-  status) without ever storing secrets, tokens, or sensitive PII.
-- High-impact actions (approve/reject leave, create announcement,
-  assign to project, update ticket) require explicit confirmation
-  before the API call is made.
+---
 
-See `docs/ai_architecture.md` → "Known limitations" for what's
-intentionally left out of this build (LangGraph orchestration,
-streaming, tracing — listed as bonuses in the assignment).
+# 🤖 AI Workflow
+
+```text
+User
+
+↓
+
+React Frontend
+
+↓
+
+FastAPI Chat Endpoint
+
+↓
+
+LLM Client
+
+↓
+
+Permission Layer
+
+↓
+
+API Tools / SQL Retrieval
+
+↓
+
+Audit Logging
+
+↓
+
+Response
+```
+
+The AI assistant never bypasses backend validation. Sensitive operations are routed through backend APIs where authentication, authorization, validation, and audit logging are enforced.
+
+---
+
+# 🔄 End-to-End Flow
+
+1. User Login
+2. Authentication
+3. Dashboard Access
+4. Employee Management
+5. Attendance Tracking
+6. Leave Request
+7. Manager Approval
+8. Report Generation
+9. AI Assistance
+
+---
+
+# 📸 Screenshots
+
+## Login
+
+*(Add Screenshot)*
+
+---
+
+## Dashboard
+
+*(Add Screenshot)*
+
+---
+
+## Employee Management
+
+*(Add Screenshot)*
+
+---
+
+## Attendance
+
+*(Add Screenshot)*
+
+---
+
+## Reports
+
+*(Add Screenshot)*
+
+---
+
+## AI Copilot
+
+*(Add Screenshot)*
+
+---
+
+# 🎥 Demo Video
+
+Demo Video:
+
+**(Add YouTube / Google Drive Link)**
+
+---
+
+# 🚧 Known Limitations
+
+- Payroll module is not included.
+- Mobile application is not available.
+- Email notifications can be expanded.
+- Advanced HR analytics can be enhanced.
+
+---
+
+# 🚀 Future Improvements
+
+- Payroll Management
+- Email Notifications
+- Calendar Integration
+- Mobile Application
+- AI Resume Screening
+- AI Interview Scheduling
+- Advanced Analytics Dashboard
+- Multi-tenant Support
+
+---
+
+# 💡 Design Decisions
+
+- React was chosen for reusable component-based UI development.
+- FastAPI provides high-performance REST APIs with automatic OpenAPI documentation.
+- SQLAlchemy simplifies secure ORM-based database interactions.
+- Alembic manages version-controlled database migrations.
+- AI operations are executed through backend services with permission checks and audit logging rather than direct database access.
+
+---
+
+# 👨‍💻 Author
+
+**Tanishk Agrawal**
+
+GitHub: https://github.com/Tanishk2001
+
+---
+
+## ⭐ If you found this project useful, consider giving it a star!
