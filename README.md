@@ -8,7 +8,7 @@
 [▶️ Watch Complete Project Demo](https://drive.google.com/file/d/1OMZc8ic8Mu4q6qyS8r2vWE2HcFP7xMUR/view?usp=sharing)
 
 ## 🌐 Live Demo
-https://tanishkhrms.vercel.app/
+https://tanishk-hrms.vercel.app/
 
 ## 📖 Documentation
 
